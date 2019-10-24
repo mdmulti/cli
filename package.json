@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/mdmulti/cli#readme",
   "dependencies": {
+    "colors": "^1.4.0",
+    "node-forge": "^0.9.1",
     "yargs": "^14.2.0"
   }
 }
