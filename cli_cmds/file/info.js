@@ -1,8 +1,8 @@
 const fs = require("fs");
 const forge = require("node-forge");
-const colors = require("colors");
+require("colors");
 
-exports.command = "info [file]";
+exports.command = "info <file>";
 exports.desc = "view information about a mdmc file";
 
 exports.builder = yargs => {
