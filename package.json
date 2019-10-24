@@ -1,6 +1,6 @@
 {
   "name": "mdmcli",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A set of CLI tools for testing the MDMulti platform.",
   "main": "cli.js",
   "bin": {
