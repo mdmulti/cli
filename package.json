@@ -1,0 +1,22 @@
+{
+  "name": "mdm-cli",
+  "version": "0.0.1",
+  "description": "A set of CLI tools for testing the platform.",
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdmulti/cli.git"
+  },
+  "author": "MDMulti, Prouser123",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mdmulti/cli/issues"
+  },
+  "homepage": "https://github.com/mdmulti/cli#readme",
+  "dependencies": {
+    "yargs": "^14.2.0"
+  }
+}
