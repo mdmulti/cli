@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "A set of CLI tools for testing the platform.",
   "main": "cli.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bin": {
+    "mdmcli": "./cli.js"
   },
   "repository": {
     "type": "git",
