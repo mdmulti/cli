@@ -1,4 +1,4 @@
-const c = require("../../constants.json").lan.multicast;
+const c = require("../../constants.json").lan;
 
 const dgram = require("dgram");
 
@@ -14,9 +14,6 @@ exports.builder = yargs => {
 };
 
 exports.handler = argv => {
-  // do something with argv.
-  console.log(argv.types);
-
   switch (argv.types) {
     case "multicast":
       createMulticast();
@@ -46,10 +43,12 @@ function createMulticast() {
   const mcast = dgram.createSocket("udp4");
 
   mcast.bind(29571, "0.0.0.0", () => {
-    mcast.addMembership(c.address);
+    mcast.addMembership(c.multicast.address);
   });
 
-  console.log(`Listening to multicast at ${c.address}:${c.port}`);
+  console.log(
+    `Listening to multicast at ${c.multicast.address}:${c.multicast.port}`
+  );
 
   mcast.on("message", data => onData(data, "mcast"));
 
@@ -58,9 +57,9 @@ function createMulticast() {
 
 function createBroadcast() {
   const mcast = dgram.createSocket("udp4");
-  mcast.bind(25816);
+  mcast.bind(c.broadcast.port);
 
-  console.log(`Listening to broadcast at ${c.address}:${c.port}`);
+  console.log(`Listening to broadcast at 255.255.255.255:${c.broadcast.port}`);
 
   mcast.on("message", data => onData(data, "bcast"));
 

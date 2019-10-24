@@ -3,6 +3,9 @@
     "multicast": {
       "address": "224.5.125.85",
       "port": 29571
+    },
+    "broadcast": {
+      "port": 25816
     }
   }
 }
