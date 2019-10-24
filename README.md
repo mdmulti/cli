@@ -9,6 +9,10 @@ A set of CLI tools for testing the MDMulti platform.
 
 `npm i -g mdmcli`
 
+Or alternatively...
+
+`npm i -g mdmulti/cli` (bleeding from master, will be buggy)
+
 ## Usage
 
 `mdmcli --help`
