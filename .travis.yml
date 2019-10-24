@@ -1,0 +1,7 @@
+language: node_js
+deploy:
+  provider: npm
+  email: $NPME
+  api_key: $NPMP
+  on:
+    tags: true
