@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+module.exports = {
+  install_path: require("fs").realpathSync(__dirname)
+};
+
 require("yargs")
   // Set the app name in responses
   .scriptName("mdmcli")

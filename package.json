@@ -19,6 +19,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "node-forge": "^0.9.1",
+    "request": "^2.88.0",
     "yargs": "^14.2.0"
   }
 }

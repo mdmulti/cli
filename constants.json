@@ -1,11 +1,22 @@
 {
-  "lan": {
-    "multicast": {
-      "address": "224.5.125.85",
-      "port": 29571
+    "this_loc": "https://raw.githubusercontent.com/mdmulti/constants/master/constants.json",
+    "version": 2,
+    "mdmc_version": 3,
+    "mdms_version": 1,
+    "peerdb_file": {
+        "name": "peerdb.mdm.json",
+        "version": 1
     },
-    "broadcast": {
-      "port": 25816
+    "oid": {
+        "base": "1.3.6.1.4.1.54622.0.1"
+    },
+    "lan": {
+        "multicast": {
+            "address": "224.5.125.85",
+            "port": 29571
+        },
+        "broadcast": {
+            "port": 25816
+        }
     }
-  }
 }
