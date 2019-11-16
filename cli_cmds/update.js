@@ -36,7 +36,7 @@ exports.handler = argv => {
     if (updateAvailable) {
       console.log(
         `${prefix}${"Update Available!".bgRed} Run '${
-          "npm -i -g mdmcli@latest".cyan
+          "npm i -g mdmcli".cyan
         }' to install the latest version. ${took}`
       );
     } else {
