@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 module.exports = {
-  install_path: require("fs").realpathSync(__dirname)
+  install_path: require("fs").realpathSync(__dirname),
+  version: require("./package.json").version
 };
 
 require("yargs")
