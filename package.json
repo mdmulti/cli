@@ -3,6 +3,9 @@
   "version": "0.3.0",
   "description": "A set of CLI tools for testing the MDMulti platform.",
   "main": "cli.js",
+  "scripts": {
+    "start": "echo 'This is not the preferred method! Please use the bin command instead!' && node cli.js"
+  },
   "bin": {
     "mdmcli": "./cli.js"
   },
