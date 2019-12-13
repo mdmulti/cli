@@ -12,7 +12,49 @@ exports.builder = yargs => {
   });
 };
 
+/* Exit Code(s)
+
+    - 0
+        no failures
+    
+    - 1
+        invalid JSON
+
+    - 2
+        missing data
+    
+    - 3
+        unsupported version
+    
+    - 4
+        invalid keypair
+
+    - 5
+        invalid ID (see constants)
+    
+    - 6
+        invalid ServerID (see constants)
+
+    -------------------------------
+    
+    - 10
+        tamper : ID
+    
+    - 11
+        tamper : serverID
+
+    - 12
+        tamper : both
+    
+
+*/
+
 exports.handler = argv => {
+  // So that we can use custom exit codes to signify errors or problems.
+  let exitCode = 0;
+
+  let tamperA = false;
+
   // Check to make sure the file has a .mdmc extension
   if (!argv.file.endsWith(".mdmc")) {
     console.error("Invalid file extension, must be *.mdmc!");
@@ -80,6 +122,8 @@ exports.handler = argv => {
         console.log(
           "User ID values do not match. This file has been tampered with.".red
         );
+        exitCode = 10;
+        tamperA = true;
       }
 
       // Check the Possible vs Actual responses (User)
@@ -92,17 +136,23 @@ exports.handler = argv => {
         console.log(
           "Server ID values do not match. This file has been tampered with.".red
         );
+        exitCode = !tamperA ? 11 : 12;
       }
 
       // End of command function
     } else {
       console.error("Unsupported file format, must be mdmc v3 or later.");
-      return;
+      exitCode = 3;
+      // no return statement as we still want process.exit() to run.
     }
   } else {
     console.error("File is not valid JSON!");
-    return;
+    exitCode = 1;
+    // no return statement as we still want process.exit() to run.
   }
+
+  // Exit with the defined exit code (useful for testing!)
+  process.exit(exitCode);
 };
 
 function validateJSON(body) {
