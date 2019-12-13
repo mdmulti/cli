@@ -17,3 +17,7 @@ Or alternatively...
 ## Usage
 
 `mdmcli --help`
+
+## Cloning
+
+- `git clone --recurse-submodules https://github.com/mdmulti/cli`
