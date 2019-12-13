@@ -9,46 +9,32 @@ const dynamic = (str, nest) => {
   nest("file export tests/sample-data/mdmc_f3c4/" + str);
 };
 
+// One-liner dynamic alternative
+const dx = (str, code) => {
+  dynamic(str, cmd => {
+    it(`Input: ${str} | Expecting code ${code}`, done => {
+      n()
+        .run(cmd)
+        .code(code)
+        .end(done);
+    });
+  });
+};
+
 // Configure chai
 chai.should();
 describe("File", () => {
   describe("Export", () => {
-    dynamic("sample.mdmc tests/out_file_export", cmd => {
-      it(cmd, done => {
-        n()
-          .run(cmd)
-          .code(0)
-          .stdout("Exported! The password is blank.".green)
-          .end(done);
-      });
-    });
+    // dynamic("sample.mdmc tests/out_file_export", cmd => {
+    // .stdout("Exported! The password is blank.".green)
 
-    dynamic("invalid_json.mdmc fakeSaveLocation", cmd => {
-      it(cmd, done => {
-        n()
-          .run(cmd)
-          .code(1)
-          .end(done);
-      });
-    });
+    dx("sample.mdmc tests/out_file_export", 0);
 
-    dynamic("missing_data.mdmc fakeSaveLocation", cmd => {
-      it(cmd, done => {
-        n()
-          .run(cmd)
-          .code(2)
-          .end(done);
-      });
-    });
+    dx("invalid_json.mdmc fakeSaveLocation", 1);
 
-    dynamic("invalid_version.mdmc fakeSaveLocation", cmd => {
-      it(cmd, done => {
-        n()
-          .run(cmd)
-          .code(3)
-          .end(done);
-      });
-    });
+    dx("missing_data.mdmc fakeSaveLocation", 2);
+
+    dx("invalid_version.mdmc fakeSaveLocation", 3);
 
     // 4 NOT AVAILABLE
 
@@ -56,34 +42,11 @@ describe("File", () => {
 
     // MISSING 6
 
-    dynamic("fake fakeSaveLocation", cmd => {
-      it(cmd, done => {
-        n()
-          .run(cmd)
-          .code(7)
-          .end(done);
-      });
-    });
+    dx("fake fakeSaveLocation", 7);
 
-    dynamic("invalid.mdmc fakeSaveLocation", cmd => {
-      it(cmd, done => {
-        n()
-          .run(cmd)
-          .code(8)
-          // .stdout("File doesn't exist!") // some reason doesn't work
-          .end(done);
-      });
-    });
+    dx("invalid.mdmc fakeSaveLocation", 8);
 
-    dynamic("sample.mdmc tests/u/n/a/v/a/i/l/a/b/l/e/file", cmd => {
-      it(cmd, done => {
-        n()
-          .run(cmd)
-          .code(9)
-          // .stdout("Could not save the certificate.") // some reason doesn't work
-          .end(done);
-      });
-    });
+    dx("sample.mdmc tests/u/n/a/v/a/i/l/a/b/l/e/file", 9);
 
     // 10 / 11 / 12 NOT AVAILABLE
   });
