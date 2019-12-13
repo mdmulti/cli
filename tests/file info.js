@@ -39,7 +39,7 @@ describe("File", () => {
       it(`Sample file: ${name}`, done => {
         n()
           .run(cmd)
-          .code(2)
+          .code(3)
           .end(done);
       });
     });
