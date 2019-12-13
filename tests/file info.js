@@ -26,12 +26,17 @@ chai.should();
 describe("File", () => {
   describe(`Info`, () => {
     // Ooohhhh, one line tests!
+
+    dx("sample.mdmc", 0);
+
     dx("invalid_json.mdmc", 1);
     dx("missing_data.mdmc", 2);
     dx("invalid_version.mdmc", 3);
     dx("invalid_keypair.mdmc", 4);
     // MISSING 5
     // MISSING 6
+    dx("invalid.invalid", 7);
+    dx("invalid.mdmc", 8);
 
     // --------------------
 

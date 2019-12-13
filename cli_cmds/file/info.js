@@ -14,38 +14,35 @@ exports.builder = yargs => {
 
 /* Exit Code(s)
 
-    - 0
-        no failures
-    
-    - 1
-        invalid JSON
+originally from
+https://github.com/mdmulti/cli/issues/14
 
-    - 2
-        missing data
-    
-    - 3
-        unsupported version
-    
-    - 4
-        invalid keypair
 
-    - 5
-        invalid ID (see constants)
+    - 0 | no failures
     
-    - 6
-        invalid ServerID (see constants)
+    - 1 | invalid JSON
+
+    - 2 | missing data
+    
+    - 3 | unsupported version
+    
+    - 4 | invalid keypair
+
+    - 5 | invalid [user] ID
+    
+    - 6 | invalid ServerID
+
+    - 7 | invalid file extension
+
+    - 8 | file not available
 
     -------------------------------
     
-    - 10
-        tamper : ID
+    - 10 | tamper : ID
     
-    - 11
-        tamper : serverID
+    - 11 | tamper : serverID
 
-    - 12
-        tamper : both
-    
+    - 12 | tamper : both
 
 */
 
@@ -58,13 +55,17 @@ exports.handler = argv => {
   // Check to make sure the file has a .mdmc extension
   if (!argv.file.endsWith(".mdmc")) {
     console.error("Invalid file extension, must be *.mdmc!");
-    return;
+    // Let's exit with a custom exit code instead.
+    // return;
+    process.exit(7);
   }
 
   // Check to make sure the file exists
   if (!fs.existsSync(argv.file)) {
     console.error("File doesn't exist!");
-    return;
+    // Let's exit with a custom exit code instead.
+    // return;
+    process.exit(8);
   }
 
   const fileData = fs.readFileSync(argv.file, "utf8");
