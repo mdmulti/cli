@@ -1,0 +1,14 @@
+# standard
+
+node_modules/
+
+# coverage
+
+coverage/
+.nyc_output/
+
+coverage.lcov
+
+# tests & that one submodule
+
+tests/

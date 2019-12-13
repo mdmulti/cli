@@ -1,0 +1,3 @@
+[submodule "tests/sample-data"]
+	path = tests/sample-data
+	url = https://github.com/mdmulti/sample-data
