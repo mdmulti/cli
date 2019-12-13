@@ -19,8 +19,6 @@ const dx = (str, code) => {
   });
 };
 
-console.log(process.cwd());
-
 // Configure chai
 chai.should();
 describe("File", () => {
@@ -33,8 +31,8 @@ describe("File", () => {
     dx("missing_data.mdmc", 2);
     dx("invalid_version.mdmc", 3);
     dx("invalid_keypair.mdmc", 4);
-    // MISSING 5
-    // MISSING 6
+    dx("invalid_id.mdmc", 5);
+    dx("invalid_server_id.mdmc", 6);
     dx("invalid.invalid", 7);
     dx("invalid.mdmc", 8);
 

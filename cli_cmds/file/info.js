@@ -2,6 +2,8 @@ const fs = require("fs");
 const forge = require("node-forge");
 require("colors");
 
+const constants = require("../../constants.json");
+
 exports.command = "info <file>";
 exports.desc = "view information about a mdmc file";
 
@@ -11,6 +13,16 @@ exports.builder = yargs => {
     type: "string"
   });
 };
+
+// Helper functions
+
+function isHex(h) {
+  return /[0-9A-Fa-f]{6}/g.test(h);
+}
+
+function isValidId(id) {
+  return id.length == constants.cert_serial_len_bytes * 2 && isHex(id);
+}
 
 /* Exit Code(s)
 
@@ -86,6 +98,22 @@ exports.handler = argv => {
 
       if (data.version >= 3) {
         // The file is probably a valid *.mdmc file
+
+        // Check if the *POSSIBLE* server / user IDs are valid
+        // I know we could check against both and have a 3rd exit code but
+        // we can't compare if they are invalid anyways.
+
+        // Therefore we will just put a process.exit on each ID check.
+        if (!isValidId(data.id)) {
+          console.error("Invalid ID!".red);
+          process.exit(5);
+        }
+
+        if (!isValidId(data.serverId)) {
+          console.error("Invalid Server ID!".red);
+          process.exit(6);
+        }
+
         console.log(`File Format Version: ${data.version.toString().yellow}`);
         console.log(`User name: ${data.displayName.toString().yellow}`);
         console.log(
