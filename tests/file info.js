@@ -49,5 +49,24 @@ describe("File", () => {
           .end(done);
       });
     });
+
+    // MISSING 5
+
+    // MISSING 6
+
+    // --------------------
+
+    // MISSING 10
+
+    // MISSING 11
+
+    dynamic("tampered.mdmc", (name, cmd) => {
+      it(`Sample file: ${name}`, done => {
+        n()
+          .run(cmd)
+          .code(12)
+          .end(done);
+      });
+    });
   });
 });
