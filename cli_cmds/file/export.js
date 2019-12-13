@@ -1,7 +1,10 @@
 // For exit code information please see exit_codes.txt
 
 const fs = require("fs");
+
 require("colors");
+
+const { validateJSON } = require("./common");
 
 exports.command = "export <file> <exportPath>";
 exports.desc = "export the certificate from a mdmc file";
@@ -62,14 +65,3 @@ exports.handler = argv => {
     process.exit(1);
   }
 };
-
-function validateJSON(body) {
-  try {
-    var data = JSON.parse(body);
-    // if came to here, then valid
-    return data;
-  } catch (e) {
-    // failed to parse
-    return null;
-  }
-}

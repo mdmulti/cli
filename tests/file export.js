@@ -23,11 +23,25 @@ describe("File", () => {
       });
     });
 
-    // MISSING 1
+    dynamic("invalid_json.mdmc fakeSaveLocation", cmd => {
+      it(cmd, done => {
+        n()
+          .run(cmd)
+          .code(1)
+          .end(done);
+      });
+    });
 
     // MISSING 2
 
-    // AVAILABLE 3
+    dynamic("invalid_version.mdmc fakeSaveLocation", cmd => {
+      it(cmd, done => {
+        n()
+          .run(cmd)
+          .code(3)
+          .end(done);
+      });
+    });
 
     // 4 NOT AVAILABLE
 

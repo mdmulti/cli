@@ -2,9 +2,10 @@
 
 const fs = require("fs");
 const forge = require("node-forge");
+
 require("colors");
 
-const constants = require("../../constants.json");
+const { validateJSON, isValidId } = require("./common");
 
 exports.command = "info <file>";
 exports.desc = "view information about a mdmc file";
@@ -15,16 +16,6 @@ exports.builder = yargs => {
     type: "string"
   });
 };
-
-// Helper functions
-
-function isHex(h) {
-  return /[0-9A-Fa-f]{6}/g.test(h);
-}
-
-function isValidId(id) {
-  return id.length == constants.cert_serial_len_bytes * 2 && isHex(id);
-}
 
 exports.handler = argv => {
   // So that we can use custom exit codes to signify errors or problems.
@@ -175,17 +166,6 @@ exports.handler = argv => {
   // Exit with the defined exit code (useful for testing!)
   process.exit(exitCode);
 };
-
-function validateJSON(body) {
-  try {
-    var data = JSON.parse(body);
-    // if came to here, then valid
-    return data;
-  } catch (e) {
-    // failed to parse
-    return null;
-  }
-}
 
 function findOID(certObj, oid) {
   const oidArr = certObj.cert.extensions;
