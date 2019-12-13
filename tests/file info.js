@@ -10,7 +10,7 @@ const dynamic = (str, code, nest) => {
 // One-liner dynamic alternative
 const dx = (str, code) => {
   dynamic(str, code, (name, code, cmd) => {
-    it(`X | Sample file: ${name} | Expecting code ${code}`, done => {
+    it(`Sample file: ${name} | Expecting code ${code}`, done => {
       n()
         .run(cmd)
         .code(code)
