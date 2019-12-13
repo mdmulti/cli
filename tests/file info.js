@@ -1,11 +1,22 @@
 const chai = require("chai");
 
 const { n } = require("./common");
-const { version } = require("../package.json");
 
 // Custom dynamic function
 const dynamic = (str, code, nest) => {
   nest(str, code, "file info tests/sample-data/mdmc_f3c4/" + str);
+};
+
+// One-liner dynamic alternative
+const dx = (str, code) => {
+  dynamic(str, code, (name, code, cmd) => {
+    it(`X | Sample file: ${name} | Expecting code ${code}`, done => {
+      n()
+        .run(cmd)
+        .code(code)
+        .end(done);
+    });
+  });
 };
 
 console.log(process.cwd());
@@ -14,59 +25,18 @@ console.log(process.cwd());
 chai.should();
 describe("File", () => {
   describe(`Info`, () => {
-    dynamic("invalid_json.mdmc", 1, (name, code, cmd) => {
-      it(`Sample file: ${name} | Expecting code ${code}`, done => {
-        n()
-          .run(cmd)
-          .code(code)
-          .end(done);
-      });
-    });
-
-    dynamic("missing_data.mdmc", 2, (name, code, cmd) => {
-      it(`Sample file: ${name} | Expecting code ${code}`, done => {
-        n()
-          .run(cmd)
-          .code(code)
-          .end(done);
-      });
-    });
-
-    dynamic("invalid_version.mdmc", 3, (name, code, cmd) => {
-      it(`Sample file: ${name} | Expecting code ${code}`, done => {
-        n()
-          .run(cmd)
-          .code(code)
-          .end(done);
-      });
-    });
-
-    dynamic("invalid_keypair.mdmc", 4, (name, code, cmd) => {
-      it(`Sample file: ${name} | Expecting code ${code}`, done => {
-        n()
-          .run(cmd)
-          .code(code)
-          .end(done);
-      });
-    });
-
+    // Ooohhhh, one line tests!
+    dx("invalid_json.mdmc", 1);
+    dx("missing_data.mdmc", 2);
+    dx("invalid_version.mdmc", 3);
+    dx("invalid_keypair.mdmc", 4);
     // MISSING 5
-
     // MISSING 6
 
     // --------------------
 
     // MISSING 10
-
     // MISSING 11
-
-    dynamic("tampered.mdmc", 12, (name, code, cmd) => {
-      it(`Sample file: ${name} | Expecting code ${code}`, done => {
-        n()
-          .run(cmd)
-          .code(code)
-          .end(done);
-      });
-    });
+    dx("tampered.mdmc", 12);
   });
 });
