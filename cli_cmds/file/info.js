@@ -1,3 +1,5 @@
+// For exit code information please see exit_codes.txt
+
 const fs = require("fs");
 const forge = require("node-forge");
 require("colors");
@@ -23,40 +25,6 @@ function isHex(h) {
 function isValidId(id) {
   return id.length == constants.cert_serial_len_bytes * 2 && isHex(id);
 }
-
-/* Exit Code(s)
-
-originally from
-https://github.com/mdmulti/cli/issues/14
-
-
-    - 0 | no failures
-    
-    - 1 | invalid JSON
-
-    - 2 | missing data
-    
-    - 3 | unsupported version
-    
-    - 4 | invalid keypair
-
-    - 5 | invalid [user] ID
-    
-    - 6 | invalid ServerID
-
-    - 7 | invalid file extension
-
-    - 8 | file not available
-
-    -------------------------------
-    
-    - 10 | tamper : ID
-    
-    - 11 | tamper : serverID
-
-    - 12 | tamper : both
-
-*/
 
 exports.handler = argv => {
   // So that we can use custom exit codes to signify errors or problems.

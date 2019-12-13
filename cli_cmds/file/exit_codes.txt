@@ -1,0 +1,35 @@
+Exit Code(s)
+------------
+
+
+originally from
+https://github.com/mdmulti/cli/issues/14
+
+
+- 0 | no failures
+    
+- 1 | invalid JSON
+
+- 2 | missing data
+    
+- 3 | unsupported version
+    
+- 4 | invalid keypair (INFO ONLY)
+
+- 5 | invalid [user] ID
+    
+- 6 | invalid ServerID
+
+- 7 | invalid file extension
+
+- 8 | file not available
+
+- 9 | save location not available (EXPORT ONLY)
+
+-------------------------------
+    
+- 10 | tamper : ID (INFO ONLY)
+    
+- 11 | tamper : serverID (INFO ONLY)
+
+- 12 | tamper : both (INFO ONLY)

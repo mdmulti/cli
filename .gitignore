@@ -62,3 +62,6 @@ typings/
 
 # coverage:report output
 coverage.lcov
+
+# test unwanted data output
+tests/out_file_export.pfx

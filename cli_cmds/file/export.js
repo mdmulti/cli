@@ -1,3 +1,5 @@
+// For exit code information please see exit_codes.txt
+
 const fs = require("fs");
 require("colors");
 
@@ -21,13 +23,13 @@ exports.handler = argv => {
   // Check to make sure the file has a .mdmc extension
   if (!argv.file.endsWith(".mdmc")) {
     console.error("Invalid file extension, must be *.mdmc!");
-    return;
+    process.exit(7);
   }
 
   // Check to make sure the file exists
   if (!fs.existsSync(argv.file)) {
     console.error("File doesn't exist!");
-    return;
+    process.exit(8);
   }
 
   const fileData = fs.readFileSync(argv.file, "utf8");
@@ -47,16 +49,17 @@ exports.handler = argv => {
         console.log("Exported! The password is blank.".green);
       } catch {
         console.error("Could not save the certificate.");
+        process.exit(9);
       }
 
       // End of command function
     } else {
       console.error("Unsupported file format, must be mdmc v3 or later.");
-      return;
+      process.exit(3);
     }
   } else {
     console.error("File is not valid JSON!");
-    return;
+    process.exit(1);
   }
 };
 
