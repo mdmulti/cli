@@ -35,8 +35,8 @@ describe("File", () => {
 
     // --------------------
 
-    // MISSING 10
-    // MISSING 11
-    dx("tampered.mdmc", 12);
+    dx("tampered_id.mdmc", 10);
+    dx("tampered_server_id.mdmc", 11);
+    dx("tampered_both.mdmc", 12);
   });
 });
