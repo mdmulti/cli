@@ -1,6 +1,8 @@
 const request = require("request");
 const fs = require("fs");
 
+require("colors");
+
 const { install_path } = require("../cli");
 const CONSTANTS_URL =
   "https://raw.githubusercontent.com/mdmulti/constants/master/constants.json";
@@ -18,9 +20,10 @@ exports.handler = argv => {
         install_path + "/constants.json",
         JSON.stringify(JSON.parse(res.body), null, 4)
       );
-      console.log("Done!");
+      console.log("Done!".green);
     } catch (ex) {
-      console.error("Error saving file.");
+      console.error("Error saving file.".red);
+      process.exit(1);
     }
   });
 };
