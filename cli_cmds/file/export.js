@@ -4,7 +4,7 @@ const fs = require("fs");
 
 require("colors");
 
-const { validateJSON } = require("./common");
+const { validateJSON, allDatapointsAvailable } = require("./common");
 
 exports.command = "export <file> <exportPath>";
 exports.desc = "export the certificate from a mdmc file";
@@ -42,6 +42,12 @@ exports.handler = argv => {
 
   if (data) {
     // The data is valid JSON
+
+    if (!allDatapointsAvailable(data)) {
+      console.error("Missing data!");
+      process.exit(2);
+    }
+
     if (data.version >= 3) {
       // The file is probably a valid *.mdmc file
       try {

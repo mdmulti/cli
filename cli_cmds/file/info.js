@@ -5,7 +5,7 @@ const forge = require("node-forge");
 
 require("colors");
 
-const { validateJSON, isValidId } = require("./common");
+const { validateJSON, isValidId, allDatapointsAvailable } = require("./common");
 
 exports.command = "info <file>";
 exports.desc = "view information about a mdmc file";
@@ -46,13 +46,7 @@ exports.handler = argv => {
 
   if (data) {
     // The data is valid JSON
-    if (
-      data.version != null &&
-      data.id != null &&
-      data.serverId != null &&
-      data.keypairs != null &&
-      data.displayName != null
-    ) {
+    if (allDatapointsAvailable(data)) {
       // All datapoints are available
 
       if (data.version >= 3) {

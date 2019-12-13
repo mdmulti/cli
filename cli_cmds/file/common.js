@@ -19,7 +19,18 @@ function isValidId(id) {
   return id.length == constants.cert_serial_len_bytes * 2 && isHex(id);
 }
 
+function allDatapointsAvailable(data) {
+  return (
+    data.version != null &&
+    data.id != null &&
+    data.serverId != null &&
+    data.keypairs != null &&
+    data.displayName != null
+  );
+}
+
 module.exports = {
   validateJSON,
-  isValidId
+  isValidId,
+  allDatapointsAvailable
 };

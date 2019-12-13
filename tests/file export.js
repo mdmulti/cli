@@ -32,7 +32,14 @@ describe("File", () => {
       });
     });
 
-    // MISSING 2
+    dynamic("missing_data.mdmc fakeSaveLocation", cmd => {
+      it(cmd, done => {
+        n()
+          .run(cmd)
+          .code(2)
+          .end(done);
+      });
+    });
 
     dynamic("invalid_version.mdmc fakeSaveLocation", cmd => {
       it(cmd, done => {
