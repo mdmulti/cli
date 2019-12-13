@@ -32,10 +32,7 @@ describe("File", () => {
       });
     });
 
-    /*
-    FILE MISSING
-
-    dynamic("unsupported_version.mdmc", (name, cmd) => {
+    dynamic("invalid_version.mdmc", (name, cmd) => {
       it(`Sample file: ${name}`, done => {
         n()
           .run(cmd)
@@ -43,7 +40,6 @@ describe("File", () => {
           .end(done);
       });
     });
-    */
 
     dynamic("invalid_keypair.mdmc", (name, cmd) => {
       it(`Sample file: ${name}`, done => {
