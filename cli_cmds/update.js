@@ -19,12 +19,12 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const bef = new Date();
-  let prefix = ""
+  let prefix = "";
   if (argv.source == "bleeding") {
-      REQ_URL = REQ_URL_BLEEDING;
-      prefix = "Bleeding".magenta + " => ".gray 
-    }
-  //console.log(REQ_URL);
+    REQ_URL = REQ_URL_BLEEDING;
+    prefix = "Bleeding".magenta + " => ".gray;
+  }
+
   REQ_URL = request(REQ_URL, (req, res) => {
     const updateAvailable = cmpVer.compare(
       JSON.parse(res.body).version,
@@ -42,8 +42,5 @@ exports.handler = argv => {
     } else {
       console.log(`${prefix}${colors.green("You are up-to-date!")} ${took}`);
     }
-
-    //console.log("NPM " + JSON.parse(res.body).version);
-    //console.log("C " + require("../cli").version);
   });
 };

@@ -1,8 +1,9 @@
 {
     "this_loc": "https://raw.githubusercontent.com/mdmulti/constants/master/constants.json",
-    "version": 2,
+    "version": 3,
     "mdmc_version": 3,
     "mdms_version": 1,
+    "cert_serial_len_bytes": 10,
     "peerdb_file": {
         "name": "peerdb.mdm.json",
         "version": 1

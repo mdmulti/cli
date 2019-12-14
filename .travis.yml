@@ -1,7 +1,22 @@
 language: node_js
+
+node_js:
+  - "10"
+
+# Deploy on tags
+
 deploy:
   provider: npm
   email: $NPME
   api_key: $NPMP
   on:
     tags: true
+
+# Run tests
+
+install:
+  - npm install
+jobs:
+  include:
+    - stage: Coverage
+      script: npm run coverage:all
