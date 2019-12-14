@@ -74,3 +74,9 @@ coverage.lcov
 # tests & that one submodule
 
 tests/
+
+.gitmodules
+
+# travis config
+
+.travis.yml
