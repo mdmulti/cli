@@ -1,7 +1,13 @@
 language: node_js
 
 node_js:
+  # Supported versions
+  - "6"
+  - "8"
   - "10"
+  - "12"
+  # Latest stable
+  - "node"
 
 # Deploy on tags
 
@@ -11,6 +17,7 @@ deploy:
   api_key: $NPMP
   on:
     tags: true
+    node_js: 10
 
 # Run tests
 
