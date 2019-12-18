@@ -91,7 +91,9 @@ exports.handler = argv => {
           ][0];
 
           console.log("Certificate loaded!".green);
-        } catch {
+          // We don't need the exception details, but we assign them anyway
+          // to fix errors on Node <10.
+        } catch (e) {
           // Error loading certificate - keypairs have likely been messed with
           console.error("Error loading certificate!\nInvalid keypair!".red);
           process.exit(4);

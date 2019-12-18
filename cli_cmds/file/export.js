@@ -72,7 +72,9 @@ exports.handler = argv => {
         // Save the file
         fs.writeFileSync(argv.exportPath, data.keypairs);
         console.log("Exported! The password is blank.".green);
-      } catch {
+        // We don't need the exception details, but we assign them anyway
+        // to fix errors on Node <10.
+      } catch (e) {
         console.error("Could not save the certificate.");
         process.exit(9);
       }
