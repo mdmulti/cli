@@ -27,7 +27,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "compare-versions": "^3.5.1",
-    "node-forge": "^0.9.1",
+    "node-forge": "^1.0.0",
     "request": "^2.88.0",
     "yargs": "^15.0.2"
   },
